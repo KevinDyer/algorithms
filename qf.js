@@ -1,15 +1,16 @@
 'use strict';
 
 (function () {
-  var QuickUnion = function (N) {
+  var QuickUnion = function(N) {
     this.id = [];
     this.sz = [];
     for (var i = 0; i < N; i++) {
       this.id.push(i);
+      this.sz.push(1);
     }
   };
 
-  QuickUnion.prototype.root = function (i) {
+  QuickUnion.prototype.root = function(i) {
     while (i != this.id[i]) {
       this.id[i] = this.id[this.id[i]];
       i = this.id[i];
@@ -17,11 +18,11 @@
     return i;
   };
 
-  QuickUnion.prototype.find = function (p ,q) {
+  QuickUnion.prototype.find = function(p ,q) {
     return this.root(p) === this.root(q);
   };
 
-  QuickUnion.prototype.union = function (p, q) {
+  QuickUnion.prototype.union = function(p, q) {
     var i = this.root(p);
     var j = this.root(q);
     if (this.sz[i] < this.sz[j]) {
