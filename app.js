@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function(undefined) {
   var N = 1000;
   var QuickFind = require('./qf.js');
   var qf = new QuickFind(N);

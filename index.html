@@ -1,5 +1,24 @@
 <html>
   <body>
-    <script src="app.js"></script>
+    <script src="QuickUnionUF.js"></script>
+    <script src="WeightedQuickUnion.js"></script>
+    <script src="WQUPC.js"></script>
+    <script>
+      var N = 10;
+      var qu = new QuickUnionUF(N);
+      var wqu = new WeightQuickUnion(N);
+      var wqupc = new WQUPC(N);
+      // 8-0 6-3 2-3 1-9 6-5 1-8 6-7 4-3 2-8
+      wqu.union(8, 0);
+      wqu.union(6, 3);
+      wqu.union(2, 3);
+      wqu.union(1, 9);
+      wqu.union(6, 5);
+      wqu.union(1, 8);
+      wqu.union(6, 7);
+      wqu.union(4, 3);
+      wqu.union(2, 8);
+      for (var i = 0; i < N; i++) console.log(wqu.id[i]);
+    </script>
   </body>
 </html>
