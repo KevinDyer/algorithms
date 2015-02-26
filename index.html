@@ -1,24 +1,38 @@
 <html>
   <body>
-    <script src="QuickUnionUF.js"></script>
-    <script src="WeightedQuickUnion.js"></script>
-    <script src="WQUPC.js"></script>
+    <script type="text/javascript" src="RBBinaryTree.js"></script>
+    <script type="text/javascript" src="BinaryTree.js"></script>
     <script>
-      var N = 10;
-      var qu = new QuickUnionUF(N);
-      var wqu = new WeightQuickUnion(N);
-      var wqupc = new WQUPC(N);
-      // 8-0 6-3 2-3 1-9 6-5 1-8 6-7 4-3 2-8
-      wqu.union(8, 0);
-      wqu.union(6, 3);
-      wqu.union(2, 3);
-      wqu.union(1, 9);
-      wqu.union(6, 5);
-      wqu.union(1, 8);
-      wqu.union(6, 7);
-      wqu.union(4, 3);
-      wqu.union(2, 8);
-      for (var i = 0; i < N; i++) console.log(wqu.id[i]);
+    var N = 256 * 256;
+    var Key = function(n) {
+      this.n = n;
+    };
+    Key.prototype.compareTo = function(key) {
+      if (this.n < key.n) {
+        return -1;
+      } else if (this.n > key.n) {
+        return 1;
+      } else {
+        return 0;
+      }
+    };
+    var getRandomInt = function(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    };
+
+    var bt = new BinaryTree();
+    var rbbt = new RBBinaryTree();
+
+    var start = Date.now();
+    for (var i = 0; i < N; i++) {
+      var key = new Key(getRandomInt(0, N*N));
+      var value = i;
+      bt.put(key, value);
+      rbbt.put(key, value);
+    }
+    console.log(Date.now() - start);
+    console.log(bt.toArray());
+    console.log(rbbt.toArray());
     </script>
   </body>
 </html>
